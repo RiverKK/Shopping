@@ -15,6 +15,10 @@
 		57AE7F741E0A6E9500573651 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57AE7F721E0A6E9500573651 /* LaunchScreen.storyboard */; };
 		57AE7F7F1E0A6E9500573651 /* ShoppingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7F7E1E0A6E9500573651 /* ShoppingTests.m */; };
 		57AE7F8A1E0A6E9500573651 /* ShoppingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7F891E0A6E9500573651 /* ShoppingUITests.m */; };
+		57AE7F991E0ACA7F00573651 /* GoodsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7F981E0ACA7F00573651 /* GoodsList.m */; };
+		57AE7F9C1E0ACB1F00573651 /* SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7F9B1E0ACB1F00573651 /* SignIn.m */; };
+		57AE7F9F1E0ACCBB00573651 /* AddGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7F9E1E0ACCBB00573651 /* AddGoods.m */; };
+		57AE7FA21E0AD04E00573651 /* GoodsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7FA11E0AD04E00573651 /* GoodsListCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,14 @@
 		57AE7F851E0A6E9500573651 /* ShoppingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57AE7F891E0A6E9500573651 /* ShoppingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingUITests.m; sourceTree = "<group>"; };
 		57AE7F8B1E0A6E9500573651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57AE7F971E0ACA7F00573651 /* GoodsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsList.h; sourceTree = "<group>"; };
+		57AE7F981E0ACA7F00573651 /* GoodsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsList.m; sourceTree = "<group>"; };
+		57AE7F9A1E0ACB1F00573651 /* SignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignIn.h; sourceTree = "<group>"; };
+		57AE7F9B1E0ACB1F00573651 /* SignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignIn.m; sourceTree = "<group>"; };
+		57AE7F9D1E0ACCBB00573651 /* AddGoods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddGoods.h; sourceTree = "<group>"; };
+		57AE7F9E1E0ACCBB00573651 /* AddGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGoods.m; sourceTree = "<group>"; };
+		57AE7FA01E0AD04E00573651 /* GoodsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListCell.h; sourceTree = "<group>"; };
+		57AE7FA11E0AD04E00573651 /* GoodsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +122,14 @@
 				57AE7F721E0A6E9500573651 /* LaunchScreen.storyboard */,
 				57AE7F751E0A6E9500573651 /* Info.plist */,
 				57AE7F641E0A6E9500573651 /* Supporting Files */,
+				57AE7F971E0ACA7F00573651 /* GoodsList.h */,
+				57AE7F981E0ACA7F00573651 /* GoodsList.m */,
+				57AE7F9A1E0ACB1F00573651 /* SignIn.h */,
+				57AE7F9B1E0ACB1F00573651 /* SignIn.m */,
+				57AE7F9D1E0ACCBB00573651 /* AddGoods.h */,
+				57AE7F9E1E0ACCBB00573651 /* AddGoods.m */,
+				57AE7FA01E0AD04E00573651 /* GoodsListCell.h */,
+				57AE7FA11E0AD04E00573651 /* GoodsListCell.m */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -275,7 +295,11 @@
 			files = (
 				57AE7F6C1E0A6E9500573651 /* ViewController.m in Sources */,
 				57AE7F691E0A6E9500573651 /* AppDelegate.m in Sources */,
+				57AE7F9F1E0ACCBB00573651 /* AddGoods.m in Sources */,
+				57AE7F991E0ACA7F00573651 /* GoodsList.m in Sources */,
+				57AE7FA21E0AD04E00573651 /* GoodsListCell.m in Sources */,
 				57AE7F661E0A6E9500573651 /* main.m in Sources */,
+				57AE7F9C1E0ACB1F00573651 /* SignIn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +529,7 @@
 				57AE7F901E0A6E9500573651 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57AE7F911E0A6E9500573651 /* Build configuration list for PBXNativeTarget "ShoppingTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +538,7 @@
 				57AE7F931E0A6E9500573651 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57AE7F941E0A6E9500573651 /* Build configuration list for PBXNativeTarget "ShoppingUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +547,7 @@
 				57AE7F961E0A6E9500573651 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
