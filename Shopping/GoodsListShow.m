@@ -1,29 +1,29 @@
 //
-//  GoodsList.m
+//  GoodsListShowViewController.m
 //  Shopping
 //
-//  Created by River on 21/12/2016.
+//  Created by River on 22/12/2016.
 //  Copyright © 2016 River. All rights reserved.
 //
 
-#import "GoodsList.h"
-#import "Goods.h"
+#import "GoodsListShow.h"
 #import "GoodsListCell.h"
+#import "Goods.h"
 
-@interface GoodsList ()<UITableViewDataSource, UITableViewDelegate>
+@interface GoodsListShow ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic,retain) NSMutableArray *goodsList;
-@property (weak, nonatomic) IBOutlet UITableView *goodsListTableView;
 
 @end
 
-@implementation GoodsList
+@implementation GoodsListShow
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
-- (void)viewDidAppear:(BOOL)animated{
-    [self.goodsListTableView reloadData];
+//    for (int i=0; i<self.goodsList.count; i++) {
+//        Goods *goods=(Goods *)[self.goodsList objectAtIndex:i];
+//        NSLog(@"%@ %@",goods.imgName,goods.name);
+//    }
 }
 
 + (NSString *)changeFloat:(NSString *)stringFloat{
@@ -53,9 +53,9 @@
 
 - (NSMutableArray*)goodsList{
     NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
-//    [user removeObjectForKey:@"goodsList"];
     NSData *takeData=[user objectForKey:@"goodsList"];
-    _goodsList=[[NSKeyedUnarchiver unarchiveObjectWithData:takeData]mutableCopy];
+    _goodsList=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
+
     if(_goodsList==nil){
         _goodsList=[NSMutableArray array];
 //        Goods *test=[[Goods alloc] init];
@@ -82,45 +82,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    GoodsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Goods List Cell"];
+    GoodsListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Goods List Show Cell"];
     Goods *goods=(Goods*)[self.goodsList objectAtIndex:indexPath.row];
     cell.goodsName.text=goods.name;
     cell.goodsKind.text=goods.kind;
     cell.goodsImg.image=[UIImage imageWithData:goods.imgName];
-    cell.goodsPrice.text=[NSString stringWithFormat:@"%@%@",@"$",[GoodsList changeFloat:[NSString stringWithFormat:@"%f",goods.price]]];
+    cell.goodsPrice.text=[NSString stringWithFormat:@"%@%@",@"$",[GoodsListShow changeFloat:[NSString stringWithFormat:@"%f",goods.price]]];
     cell.goodsSales.text=[NSString stringWithFormat:@"%d",goods.sales];
     cell.goodsDesc.text=goods.desc;
+
+//    UITapGestureRecognizer *g = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTapped:)];
+//    [cell.headImageView addGestureRecognizer:g];
+//    cell.headImageView.userInteractionEnabled = YES;
     
     return cell;
 }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return YES;
-}
-
-- (NSString*)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return @"删除";
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (editingStyle == UITableViewCellEditingStyleDelete){
-//        [self.goodsList removeObjectAtIndex:indexPath.row];
-//        NSLog(@"%lu", (unsigned long)self.goodsList.count);
-//        NSLog(@"%lu", (unsigned long)indexPath.row);
-        NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
-        NSData *takeData=[user objectForKey:@"goodsList"];
-        NSMutableArray *tmpGoodsList=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
-        [tmpGoodsList removeObjectAtIndex:indexPath.row];
-        NSData *data=[NSKeyedArchiver archivedDataWithRootObject:tmpGoodsList];
-        [user setObject:data forKey:@"goodsList"];
-        [user synchronize];
-        [self.goodsListTableView reloadData];
-    }
-}
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return YES;
+//}
 
 /*
 #pragma mark - Navigation

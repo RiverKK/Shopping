@@ -19,6 +19,11 @@
 		57AE7F9C1E0ACB1F00573651 /* SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7F9B1E0ACB1F00573651 /* SignIn.m */; };
 		57AE7F9F1E0ACCBB00573651 /* AddGoods.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7F9E1E0ACCBB00573651 /* AddGoods.m */; };
 		57AE7FA21E0AD04E00573651 /* GoodsListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7FA11E0AD04E00573651 /* GoodsListCell.m */; };
+		57AE7FA51E0B976100573651 /* Goods.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7FA41E0B976100573651 /* Goods.m */; };
+		57AE7FA81E0B999500573651 /* GoodsListShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7FA71E0B999500573651 /* GoodsListShow.m */; };
+		57AE7FAB1E0B99DA00573651 /* ShoppingCart.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7FAA1E0B99DA00573651 /* ShoppingCart.m */; };
+		57AE7FAD1E0BC91700573651 /* me.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57AE7FAC1E0BC91700573651 /* me.jpg */; };
+		57D1437E1E0D19E6008EEF3F /* GoodsDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D1437D1E0D19E6008EEF3F /* GoodsDetail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,15 @@
 		57AE7F9E1E0ACCBB00573651 /* AddGoods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddGoods.m; sourceTree = "<group>"; };
 		57AE7FA01E0AD04E00573651 /* GoodsListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListCell.h; sourceTree = "<group>"; };
 		57AE7FA11E0AD04E00573651 /* GoodsListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListCell.m; sourceTree = "<group>"; };
+		57AE7FA31E0B976100573651 /* Goods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goods.h; sourceTree = "<group>"; };
+		57AE7FA41E0B976100573651 /* Goods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goods.m; sourceTree = "<group>"; };
+		57AE7FA61E0B999500573651 /* GoodsListShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsListShow.h; sourceTree = "<group>"; };
+		57AE7FA71E0B999500573651 /* GoodsListShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsListShow.m; sourceTree = "<group>"; };
+		57AE7FA91E0B99DA00573651 /* ShoppingCart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCart.h; sourceTree = "<group>"; };
+		57AE7FAA1E0B99DA00573651 /* ShoppingCart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCart.m; sourceTree = "<group>"; };
+		57AE7FAC1E0BC91700573651 /* me.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = me.jpg; path = ../../CourseTableViewTest/CourseTableViewTest/me.jpg; sourceTree = "<group>"; };
+		57D1437C1E0D19E6008EEF3F /* GoodsDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetail.h; sourceTree = "<group>"; };
+		57D1437D1E0D19E6008EEF3F /* GoodsDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +127,7 @@
 		57AE7F631E0A6E9500573651 /* Shopping */ = {
 			isa = PBXGroup;
 			children = (
+				57AE7FAC1E0BC91700573651 /* me.jpg */,
 				57AE7F671E0A6E9500573651 /* AppDelegate.h */,
 				57AE7F681E0A6E9500573651 /* AppDelegate.m */,
 				57AE7F6A1E0A6E9500573651 /* ViewController.h */,
@@ -130,6 +145,14 @@
 				57AE7F9E1E0ACCBB00573651 /* AddGoods.m */,
 				57AE7FA01E0AD04E00573651 /* GoodsListCell.h */,
 				57AE7FA11E0AD04E00573651 /* GoodsListCell.m */,
+				57AE7FA31E0B976100573651 /* Goods.h */,
+				57AE7FA41E0B976100573651 /* Goods.m */,
+				57AE7FA61E0B999500573651 /* GoodsListShow.h */,
+				57AE7FA71E0B999500573651 /* GoodsListShow.m */,
+				57AE7FA91E0B99DA00573651 /* ShoppingCart.h */,
+				57AE7FAA1E0B99DA00573651 /* ShoppingCart.m */,
+				57D1437C1E0D19E6008EEF3F /* GoodsDetail.h */,
+				57D1437D1E0D19E6008EEF3F /* GoodsDetail.m */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -269,6 +292,7 @@
 				57AE7F741E0A6E9500573651 /* LaunchScreen.storyboard in Resources */,
 				57AE7F711E0A6E9500573651 /* Assets.xcassets in Resources */,
 				57AE7F6F1E0A6E9500573651 /* Main.storyboard in Resources */,
+				57AE7FAD1E0BC91700573651 /* me.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,12 +318,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				57AE7F6C1E0A6E9500573651 /* ViewController.m in Sources */,
+				57D1437E1E0D19E6008EEF3F /* GoodsDetail.m in Sources */,
 				57AE7F691E0A6E9500573651 /* AppDelegate.m in Sources */,
 				57AE7F9F1E0ACCBB00573651 /* AddGoods.m in Sources */,
 				57AE7F991E0ACA7F00573651 /* GoodsList.m in Sources */,
 				57AE7FA21E0AD04E00573651 /* GoodsListCell.m in Sources */,
 				57AE7F661E0A6E9500573651 /* main.m in Sources */,
+				57AE7FA81E0B999500573651 /* GoodsListShow.m in Sources */,
+				57AE7FA51E0B976100573651 /* Goods.m in Sources */,
 				57AE7F9C1E0ACB1F00573651 /* SignIn.m in Sources */,
+				57AE7FAB1E0B99DA00573651 /* ShoppingCart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

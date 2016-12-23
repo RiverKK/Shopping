@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GoodsList : UIViewController
++ (NSString *)changeFloat:(NSString *)stringFloat;
 
 @end

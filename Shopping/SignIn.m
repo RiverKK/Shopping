@@ -35,21 +35,22 @@
 */
 
 - (IBAction)signIn:(id)sender {
-    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *userInfo = [[user dictionaryForKey:@"userInfo"] mutableCopy];
-    NSLog(@"%@", [userInfo objectForKey:@"userName"]);
-    NSLog(@"%@", [userInfo objectForKey:@"userPassword"]);
-    
-    if ([[userInfo objectForKey:@"userName"]isEqualToString:self.userName.text] && [[userInfo objectForKey:@"userPassword"]isEqualToString:self.userPassword.text]) {
-        [self performSegueWithIdentifier:@"sign in successfully" sender:self];
-    }
-    else{
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"登录失败" message:@"用户名或密码错误。" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
-        [alertController addAction:cancelAction];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
+//    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+//    NSMutableDictionary *userInfo = [[user dictionaryForKey:@"userInfo"] mutableCopy];
+////    NSLog(@"%@", [userInfo objectForKey:@"userName"]);
+////    NSLog(@"%@", [userInfo objectForKey:@"userPassword"]);
+//    
+//    if ([[userInfo objectForKey:@"userName"]isEqualToString:self.userName.text] && [[userInfo objectForKey:@"userPassword"]isEqualToString:self.userPassword.text]) {
+//        [self performSegueWithIdentifier:@"sign in successfully" sender:self];
+//    }
+//    else{
+//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"登录失败" message:@"用户名或密码错误。" preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+//        [alertController addAction:cancelAction];
+//        
+//        [self presentViewController:alertController animated:YES completion:nil];
+//    }
+    [self performSegueWithIdentifier:@"sign in successfully" sender:self];
 }
 @end
