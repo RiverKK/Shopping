@@ -8,10 +8,12 @@
 
 #import "GoodsListShow.h"
 #import "GoodsListCell.h"
+#import "GoodsDetailFrontier.h"
 #import "Goods.h"
 
-@interface GoodsListShow ()<UITableViewDataSource, UITableViewDelegate>
+@interface GoodsListShow ()<UITableViewDataSource, UITableViewDelegate,GoodsDetailDelegate>
 @property (nonatomic,retain) NSMutableArray *goodsList;
+@property (weak, nonatomic) IBOutlet UITableView *goodsListTableView;
 
 @end
 
@@ -24,6 +26,10 @@
 //        Goods *goods=(Goods *)[self.goodsList objectAtIndex:i];
 //        NSLog(@"%@ %@",goods.imgName,goods.name);
 //    }
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self.goodsListTableView reloadData];
 }
 
 + (NSString *)changeFloat:(NSString *)stringFloat{
@@ -58,17 +64,6 @@
 
     if(_goodsList==nil){
         _goodsList=[NSMutableArray array];
-//        Goods *test=[[Goods alloc] init];
-//        test.name=@"name";
-//        test.imgName=(NSData*)UIImageJPEGRepresentation([UIImage imageNamed:@"me.jpg"], 1.0);
-//        test.kind=@"kind";
-//        test.price=10;
-//        test.sales=10;
-//        test.desc=@"this is me";
-//        [_goodsList addObject:test];
-//        NSData *data=[NSKeyedArchiver archivedDataWithRootObject:_goodsList];
-//        [user setObject:data forKey:@"goodsList"];
-//        [user synchronize];
     }
     return _goodsList;
 }
@@ -96,6 +91,35 @@
 //    cell.headImageView.userInteractionEnabled = YES;
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"Show Goods Detail frontier"]){
+        GoodsDetailFrontier *vc = (GoodsDetailFrontier *)segue.destinationViewController;
+        vc.goods  = (Goods *)sender;
+        vc.delegate = self;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    Goods *goods = (Goods *)[self.goodsList objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"Show Goods Detail frontier" sender:goods];
+    
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (NSArray<UITableViewRowAction*>*)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewRowAction *addToShoppingCart=[UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"加入购物车" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
+        NSLog(@"点击加入购物车");
+    }];
+    addToShoppingCart.backgroundColor=[UIColor greenColor];
+    return @[addToShoppingCart];
+}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 //- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
 //    return YES;

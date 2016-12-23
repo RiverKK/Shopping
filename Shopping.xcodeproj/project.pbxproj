@@ -24,6 +24,8 @@
 		57AE7FAB1E0B99DA00573651 /* ShoppingCart.m in Sources */ = {isa = PBXBuildFile; fileRef = 57AE7FAA1E0B99DA00573651 /* ShoppingCart.m */; };
 		57AE7FAD1E0BC91700573651 /* me.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 57AE7FAC1E0BC91700573651 /* me.jpg */; };
 		57D1437E1E0D19E6008EEF3F /* GoodsDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D1437D1E0D19E6008EEF3F /* GoodsDetail.m */; };
+		57D143811E0D4731008EEF3F /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D143801E0D4731008EEF3F /* ChangePassword.m */; };
+		57D143841E0D51A0008EEF3F /* GoodsDetailFrontier.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D143831E0D51A0008EEF3F /* GoodsDetailFrontier.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,10 @@
 		57AE7FAC1E0BC91700573651 /* me.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = me.jpg; path = ../../CourseTableViewTest/CourseTableViewTest/me.jpg; sourceTree = "<group>"; };
 		57D1437C1E0D19E6008EEF3F /* GoodsDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetail.h; sourceTree = "<group>"; };
 		57D1437D1E0D19E6008EEF3F /* GoodsDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetail.m; sourceTree = "<group>"; };
+		57D1437F1E0D4731008EEF3F /* ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassword.h; sourceTree = "<group>"; };
+		57D143801E0D4731008EEF3F /* ChangePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassword.m; sourceTree = "<group>"; };
+		57D143821E0D51A0008EEF3F /* GoodsDetailFrontier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailFrontier.h; sourceTree = "<group>"; };
+		57D143831E0D51A0008EEF3F /* GoodsDetailFrontier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailFrontier.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,22 +143,26 @@
 				57AE7F721E0A6E9500573651 /* LaunchScreen.storyboard */,
 				57AE7F751E0A6E9500573651 /* Info.plist */,
 				57AE7F641E0A6E9500573651 /* Supporting Files */,
-				57AE7F971E0ACA7F00573651 /* GoodsList.h */,
-				57AE7F981E0ACA7F00573651 /* GoodsList.m */,
 				57AE7F9A1E0ACB1F00573651 /* SignIn.h */,
 				57AE7F9B1E0ACB1F00573651 /* SignIn.m */,
-				57AE7F9D1E0ACCBB00573651 /* AddGoods.h */,
-				57AE7F9E1E0ACCBB00573651 /* AddGoods.m */,
+				57D1437F1E0D4731008EEF3F /* ChangePassword.h */,
+				57D143801E0D4731008EEF3F /* ChangePassword.m */,
+				57AE7F971E0ACA7F00573651 /* GoodsList.h */,
+				57AE7F981E0ACA7F00573651 /* GoodsList.m */,
 				57AE7FA01E0AD04E00573651 /* GoodsListCell.h */,
 				57AE7FA11E0AD04E00573651 /* GoodsListCell.m */,
+				57D1437C1E0D19E6008EEF3F /* GoodsDetail.h */,
+				57D1437D1E0D19E6008EEF3F /* GoodsDetail.m */,
+				57AE7F9D1E0ACCBB00573651 /* AddGoods.h */,
+				57AE7F9E1E0ACCBB00573651 /* AddGoods.m */,
 				57AE7FA31E0B976100573651 /* Goods.h */,
 				57AE7FA41E0B976100573651 /* Goods.m */,
 				57AE7FA61E0B999500573651 /* GoodsListShow.h */,
 				57AE7FA71E0B999500573651 /* GoodsListShow.m */,
+				57D143821E0D51A0008EEF3F /* GoodsDetailFrontier.h */,
+				57D143831E0D51A0008EEF3F /* GoodsDetailFrontier.m */,
 				57AE7FA91E0B99DA00573651 /* ShoppingCart.h */,
 				57AE7FAA1E0B99DA00573651 /* ShoppingCart.m */,
-				57D1437C1E0D19E6008EEF3F /* GoodsDetail.h */,
-				57D1437D1E0D19E6008EEF3F /* GoodsDetail.m */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -320,7 +330,9 @@
 				57AE7F6C1E0A6E9500573651 /* ViewController.m in Sources */,
 				57D1437E1E0D19E6008EEF3F /* GoodsDetail.m in Sources */,
 				57AE7F691E0A6E9500573651 /* AppDelegate.m in Sources */,
+				57D143841E0D51A0008EEF3F /* GoodsDetailFrontier.m in Sources */,
 				57AE7F9F1E0ACCBB00573651 /* AddGoods.m in Sources */,
+				57D143811E0D4731008EEF3F /* ChangePassword.m in Sources */,
 				57AE7F991E0ACA7F00573651 /* GoodsList.m in Sources */,
 				57AE7FA21E0AD04E00573651 /* GoodsListCell.m in Sources */,
 				57AE7F661E0A6E9500573651 /* main.m in Sources */,

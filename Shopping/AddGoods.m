@@ -96,6 +96,7 @@
         if(goodsList==nil){
             goodsList=[NSMutableArray array];
         }
+        goods.goodsId=(int)goodsList.count;
         [goodsList addObject:goods];
         NSData *data=[NSKeyedArchiver archivedDataWithRootObject:goodsList];
         [user setObject:data forKey:@"goodsList"];

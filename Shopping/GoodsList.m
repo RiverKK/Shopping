@@ -9,8 +9,8 @@
 #import "GoodsList.h"
 #import "Goods.h"
 #import "GoodsListCell.h"
-
-@interface GoodsList ()<UITableViewDataSource, UITableViewDelegate>
+#import "GoodsDetail.h"
+@interface GoodsList ()<UITableViewDataSource, UITableViewDelegate,GoodsDetailDelegate>
 @property (nonatomic,retain) NSMutableArray *goodsList;
 @property (weak, nonatomic) IBOutlet UITableView *goodsListTableView;
 
@@ -94,8 +94,23 @@
     return cell;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"Show Goods Detail"]){
+        GoodsDetail *vc = (GoodsDetail *)segue.destinationViewController;
+        vc.goods  = (Goods *)sender;
+        vc.delegate = self;
+    }
+}
+
+- (void)goodsInfoSave:(Goods *)goods Sender:(GoodsDetail*)sender{
+    
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    Goods *goods = (Goods *)[self.goodsList objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"Show Goods Detail" sender:goods];
+
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -115,6 +130,11 @@
         NSData *takeData=[user objectForKey:@"goodsList"];
         NSMutableArray *tmpGoodsList=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
         [tmpGoodsList removeObjectAtIndex:indexPath.row];
+        for (int i=0; i<tmpGoodsList.count; i++) {
+            Goods *tmpGoods=(Goods*)[tmpGoodsList objectAtIndex:i];
+            tmpGoods.goodsId=i;
+        }
+        
         NSData *data=[NSKeyedArchiver archivedDataWithRootObject:tmpGoodsList];
         [user setObject:data forKey:@"goodsList"];
         [user synchronize];

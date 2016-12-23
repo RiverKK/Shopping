@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface Goods : NSObject<NSCoding>
+@property (nonatomic,assign) int goodsId;
 @property (nonatomic,retain) NSString *name;
 @property (nonatomic,assign) double price;
 @property (nonatomic,assign) int sales;

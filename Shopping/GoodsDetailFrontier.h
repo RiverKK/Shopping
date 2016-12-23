@@ -1,5 +1,5 @@
 //
-//  GoodsDetail.h
+//  GoodsDetailFrontier.h
 //  Shopping
 //
 //  Created by River on 23/12/2016.
@@ -9,13 +9,13 @@
 #import "ViewController.h"
 #import "Goods.h"
 
-@class GoodsDetail;
+@class GoodsDetailFrontier;
 @protocol GoodsDetailDelegate <NSObject>
 
-- (void)goodsInfoSave:(Goods *)goods Sender:(GoodsDetail*)sender;
+//- (void)addGoodsToShoppingCart:(Goods *)goods Sender:(GoodsDetailFrontier*)sender;
 
 @end
-@interface GoodsDetail : ViewController
+@interface GoodsDetailFrontier : ViewController
 @property (nonatomic, retain) Goods *goods;
 @property (nonatomic, retain) id <GoodsDetailDelegate> delegate;
 @end

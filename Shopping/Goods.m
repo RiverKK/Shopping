@@ -28,6 +28,7 @@
 //    return _sales;
 //}
 - (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeInteger:self.goodsId forKey:@"id"];
     [aCoder encodeObject:self.name forKey:@"name"];
     [aCoder encodeObject:self.kind forKey:@"kind"];
     [aCoder encodeObject:self.desc forKey:@"desc"];
@@ -41,6 +42,7 @@
         if(aDecoder ==nil){
             return self;
         }
+        self.goodsId=[aDecoder decodeIntForKey:@"id"];
         self.name=[aDecoder decodeObjectForKey:@"name"];
         self.kind=[aDecoder decodeObjectForKey:@"kind"];
         self.desc=[aDecoder decodeObjectForKey:@"desc"];
