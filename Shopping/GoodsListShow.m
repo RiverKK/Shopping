@@ -10,14 +10,30 @@
 #import "GoodsListCell.h"
 #import "GoodsDetailFrontier.h"
 #import "Goods.h"
-
-@interface GoodsListShow ()<UITableViewDataSource, UITableViewDelegate,GoodsDetailDelegate>
+#import "ShoppingCart.h"
+#import "GoodsBuy.h"
+@interface GoodsListShow ()<UITableViewDataSource, UITableViewDelegate,GoodsDetailDelegate,ShoppingCartDelegate>
 @property (nonatomic,retain) NSMutableArray *goodsList;
+@property (nonatomic,retain) NSMutableArray *shoppingList;
 @property (weak, nonatomic) IBOutlet UITableView *goodsListTableView;
 
 @end
 
 @implementation GoodsListShow
+
+- (NSMutableArray*)shoppingList{
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+    NSData *takeData=[user objectForKey:@"shoppingCart"];
+    _shoppingList=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
+    if(_shoppingList==nil){
+        _shoppingList=[NSMutableArray array];
+    }
+    return _shoppingList;
+}
+
+- (void)afterJiesuan:(NSMutableArray*)shoppingListJiesuan Sender:(ShoppingCart*)sender{
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +45,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+//    NSLog(@"%lu", (unsigned long)self.shoppingList.count);
     [self.goodsListTableView reloadData];
 }
 
@@ -61,7 +78,6 @@
     NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
     NSData *takeData=[user objectForKey:@"goodsList"];
     _goodsList=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
-
     if(_goodsList==nil){
         _goodsList=[NSMutableArray array];
     }
@@ -82,8 +98,8 @@
     cell.goodsName.text=goods.name;
     cell.goodsKind.text=goods.kind;
     cell.goodsImg.image=[UIImage imageWithData:goods.imgName];
-    cell.goodsPrice.text=[NSString stringWithFormat:@"%@%@",@"$",[GoodsListShow changeFloat:[NSString stringWithFormat:@"%f",goods.price]]];
-    cell.goodsSales.text=[NSString stringWithFormat:@"%d",goods.sales];
+    cell.goodsPrice.text=[NSString stringWithFormat:@"%@%@",@"¥",[NSString stringWithFormat:@"%.2f",goods.price]];
+    cell.goodsSales.text=[NSString stringWithFormat:@"%@%d",@"已售",goods.sales];
     cell.goodsDesc.text=goods.desc;
 
 //    UITapGestureRecognizer *g = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewTapped:)];
@@ -99,6 +115,11 @@
         vc.goods  = (Goods *)sender;
         vc.delegate = self;
     }
+//    else if ([segue.identifier isEqualToString:@"Add Shopping Cart"]){
+//        ShoppingCart *vc=(ShoppingCart*)segue.destinationViewController;
+//        vc.shoppingList=self.shoppingList;
+//        vc.delegate=self;
+//    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -114,13 +135,92 @@
 
 - (NSArray<UITableViewRowAction*>*)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewRowAction *addToShoppingCart=[UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleNormal title:@"加入购物车" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        NSLog(@"点击加入购物车");
+        NSLog(@"商品加入购物车");
+        Goods *goods=(Goods*)[self.goodsList objectAtIndex:indexPath.row];
+        BOOL flag=NO;
+        for (int i=0; i<self.shoppingList.count; i++) {
+            GoodsBuy *goodsBuy=(GoodsBuy*)[self.shoppingList objectAtIndex:i];
+            if (goods.goodsId==goodsBuy.goodsId) {
+                flag=YES;
+                break;
+            }
+        }
+        if(flag==NO){
+            GoodsBuy *goodsBUy=[[GoodsBuy alloc]init];
+            goodsBUy.name=goods.name;
+            goodsBUy.kind=goods.kind;
+            goodsBUy.desc=goods.desc;
+            goodsBUy.price=goods.price;
+            goodsBUy.sales=goods.sales;
+            goodsBUy.goodsId=goods.goodsId;
+            goodsBUy.amount=1;
+            goodsBUy.imgName=goods.imgName;
+            
+            //        [self.shoppingList addObject:goodsBUy];
+            NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+            NSData *takeData=[user objectForKey:@"shoppingCart"];
+            NSMutableArray *tmpShoppingCart=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
+            if (tmpShoppingCart==nil) {
+                tmpShoppingCart=[[NSMutableArray alloc]init];
+            }
+            [tmpShoppingCart addObject:goodsBUy];
+            NSData *data=[NSKeyedArchiver archivedDataWithRootObject:tmpShoppingCart];
+            [user setObject:data forKey:@"shoppingCart"];
+            [user synchronize];
+        }
+        else{
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"商品已存在" message:@"请重新选择。" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+        [self.goodsListTableView reloadData];
     }];
     addToShoppingCart.backgroundColor=[UIColor greenColor];
     return @[addToShoppingCart];
 }
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-}
+
+//- (NSString*)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return @"删除";
+//}
+//
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    if (editingStyle == UITableViewCellEditingStyleDelete){
+//        Goods *goods=(Goods*)[self.goodsList objectAtIndex:indexPath.row];
+//        for (int i=0; i<self.shoppingList.count; i++) {
+//            GoodsBuy *goodsBuy=(GoodsBuy*)[self.shoppingList objectAtIndex:i];
+//            if (goods.goodsId==goodsBuy.goodsId) {
+//                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"商品已存在" message:@"请重新选择。" preferredStyle:UIAlertControllerStyleAlert];
+//                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+//                [alertController addAction:cancelAction];
+//                [self presentViewController:alertController animated:YES completion:nil];
+//            }
+//        }
+//        GoodsBuy *goodsBUy=[[GoodsBuy alloc]init];
+//        goodsBUy.name=goods.name;
+//        goodsBUy.kind=goods.kind;
+//        goodsBUy.desc=goods.desc;
+//        goodsBUy.price=goods.price;
+//        goodsBUy.sales=goods.sales;
+//        goodsBUy.goodsId=goods.goodsId;
+//        goodsBUy.amount=1;
+//        goodsBUy.imgName=goods.imgName;
+//        
+//        //        [self.shoppingList addObject:goodsBUy];
+//        NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+//        NSData *takeData=[user objectForKey:@"shoppingCart"];
+//        NSMutableArray *tmpShoppingCart=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
+//        if (tmpShoppingCart==nil) {
+//            tmpShoppingCart=[[NSMutableArray alloc]init];
+//        }
+//        [tmpShoppingCart addObject:goodsBUy];
+//        NSData *data=[NSKeyedArchiver archivedDataWithRootObject:tmpShoppingCart];
+//        [user setObject:data forKey:@"shoppingCart"];
+//        [user synchronize];
+//        NSLog(@"%lu", (unsigned long)tmpShoppingCart.count);
+//        [self.goodsListTableView reloadData];
+//    }
+//}
 //- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
 //    return YES;
 //}

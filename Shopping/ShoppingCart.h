@@ -7,7 +7,16 @@
 //
 
 #import "ViewController.h"
+#import "Goods.h"
 
+@class ShoppingCart;
+@protocol ShoppingCartDelegate <NSObject>
+
+- (void)afterJiesuan:(NSMutableArray*)shoppingListJiesuan Sender:(ShoppingCart*)sender;
+
+@end
 @interface ShoppingCart : ViewController
+@property (nonatomic,retain) NSMutableArray *shoppingList;
+@property (nonatomic, retain) id <ShoppingCartDelegate> delegate;
 
 @end

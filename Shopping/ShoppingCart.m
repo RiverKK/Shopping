@@ -7,8 +7,13 @@
 //
 
 #import "ShoppingCart.h"
+#import "ShoppingCartCell.h"
+#import "GoodsBuy.h"
 
 @interface ShoppingCart ()
+@property (weak, nonatomic) IBOutlet UITableView *goodsListTableView;
+- (IBAction)jiesuan:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *totalMoney;
 
 @end
 
@@ -19,19 +24,43 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated{
+    [self.goodsListTableView reloadData];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSMutableArray*)shoppingList{
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+//    [user removeObjectForKey:@"shoppingCart"];
+    NSData *takeData=[user objectForKey:@"shoppingCart"];
+    _shoppingList=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
+    if(_shoppingList==nil){
+        _shoppingList=[NSMutableArray array];
+    }
+    return _shoppingList;
 }
-*/
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.shoppingList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    ShoppingCartCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Shopping Cart Cell"];
+//    NSMutableDictionary *tmpDic=(NSMutableDictionary*)[self.shoppingList objectAtIndex:indexPath.row];
+    GoodsBuy *goodsBuy=(GoodsBuy*)[self.shoppingList objectAtIndex:indexPath.row];
+    cell.goodsName.text=goodsBuy.name;
+    cell.goodsKind.text=goodsBuy.kind;
+    cell.goodsImage.image=[UIImage imageWithData:goodsBuy.imgName];
+    cell.goodsPrice.text=[NSString stringWithFormat:@"%@%@",@"¥",[NSString stringWithFormat:@"%.2f",goodsBuy.price]];
+    cell.goodsSales.text=[NSString stringWithFormat:@"%@%d",@"已售",goodsBuy.sales];
+    cell.goodsDesc.text=goodsBuy.desc;
+    cell.goodsAmount.text=[NSString stringWithFormat:@"%d", goodsBuy.amount];
+    return cell;
+}
+
+- (IBAction)jiesuan:(id)sender {
+}
 @end

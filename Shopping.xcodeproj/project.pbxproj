@@ -26,6 +26,8 @@
 		57D1437E1E0D19E6008EEF3F /* GoodsDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D1437D1E0D19E6008EEF3F /* GoodsDetail.m */; };
 		57D143811E0D4731008EEF3F /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D143801E0D4731008EEF3F /* ChangePassword.m */; };
 		57D143841E0D51A0008EEF3F /* GoodsDetailFrontier.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D143831E0D51A0008EEF3F /* GoodsDetailFrontier.m */; };
+		57D143871E0D610E008EEF3F /* ShoppingCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D143861E0D610E008EEF3F /* ShoppingCartCell.m */; };
+		57D1438A1E0D9161008EEF3F /* GoodsBuy.m in Sources */ = {isa = PBXBuildFile; fileRef = 57D143891E0D9161008EEF3F /* GoodsBuy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		57D143801E0D4731008EEF3F /* ChangePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassword.m; sourceTree = "<group>"; };
 		57D143821E0D51A0008EEF3F /* GoodsDetailFrontier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailFrontier.h; sourceTree = "<group>"; };
 		57D143831E0D51A0008EEF3F /* GoodsDetailFrontier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailFrontier.m; sourceTree = "<group>"; };
+		57D143851E0D610E008EEF3F /* ShoppingCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingCartCell.h; sourceTree = "<group>"; };
+		57D143861E0D610E008EEF3F /* ShoppingCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingCartCell.m; sourceTree = "<group>"; };
+		57D143881E0D9161008EEF3F /* GoodsBuy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsBuy.h; sourceTree = "<group>"; };
+		57D143891E0D9161008EEF3F /* GoodsBuy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsBuy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,10 @@
 				57D143831E0D51A0008EEF3F /* GoodsDetailFrontier.m */,
 				57AE7FA91E0B99DA00573651 /* ShoppingCart.h */,
 				57AE7FAA1E0B99DA00573651 /* ShoppingCart.m */,
+				57D143851E0D610E008EEF3F /* ShoppingCartCell.h */,
+				57D143861E0D610E008EEF3F /* ShoppingCartCell.m */,
+				57D143881E0D9161008EEF3F /* GoodsBuy.h */,
+				57D143891E0D9161008EEF3F /* GoodsBuy.m */,
 			);
 			path = Shopping;
 			sourceTree = "<group>";
@@ -328,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57AE7F6C1E0A6E9500573651 /* ViewController.m in Sources */,
+				57D143871E0D610E008EEF3F /* ShoppingCartCell.m in Sources */,
 				57D1437E1E0D19E6008EEF3F /* GoodsDetail.m in Sources */,
 				57AE7F691E0A6E9500573651 /* AppDelegate.m in Sources */,
 				57D143841E0D51A0008EEF3F /* GoodsDetailFrontier.m in Sources */,
@@ -338,6 +349,7 @@
 				57AE7F661E0A6E9500573651 /* main.m in Sources */,
 				57AE7FA81E0B999500573651 /* GoodsListShow.m in Sources */,
 				57AE7FA51E0B976100573651 /* Goods.m in Sources */,
+				57D1438A1E0D9161008EEF3F /* GoodsBuy.m in Sources */,
 				57AE7F9C1E0ACB1F00573651 /* SignIn.m in Sources */,
 				57AE7FAB1E0B99DA00573651 /* ShoppingCart.m in Sources */,
 			);

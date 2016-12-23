@@ -87,8 +87,8 @@
     cell.goodsName.text=goods.name;
     cell.goodsKind.text=goods.kind;
     cell.goodsImg.image=[UIImage imageWithData:goods.imgName];
-    cell.goodsPrice.text=[NSString stringWithFormat:@"%@%@",@"$",[GoodsList changeFloat:[NSString stringWithFormat:@"%f",goods.price]]];
-    cell.goodsSales.text=[NSString stringWithFormat:@"%d",goods.sales];
+    cell.goodsPrice.text=[NSString stringWithFormat:@"%@%@",@"¥",[NSString stringWithFormat:@"%.2f",goods.price]];
+    cell.goodsSales.text=[NSString stringWithFormat:@"%@%d",@"已售",goods.sales];
     cell.goodsDesc.text=goods.desc;
     
     return cell;
