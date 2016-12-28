@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ShoppingCartCell : UITableViewCell
+@property (nonatomic,assign) int goodsId;
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
 @property (weak, nonatomic) IBOutlet UILabel *goodsName;
 @property (weak, nonatomic) IBOutlet UILabel *goodsKind;

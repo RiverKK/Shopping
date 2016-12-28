@@ -21,11 +21,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tongzhi:) name:@"tongzhi" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tongzhi1:) name:@"tongzhi1" object:nil];
+
+    double sumAmount=0;
+    for (int i=0; i<self.shoppingList.count; i++) {
+        GoodsBuy *goodsBuy=(GoodsBuy*)[self.shoppingList objectAtIndex:i];
+        sumAmount+=goodsBuy.price*goodsBuy.amount;
+    }
+    self.totalMoney.text=[NSString stringWithFormat:@"%.2f", sumAmount];
     // Do any additional setup after loading the view.
 }
 
+- (void)tongzhi1:(NSNotification *)text{
+    NSLog(@"－－－－－接收到通知------");
+    double tmpPrice=[self.totalMoney.text doubleValue];
+    tmpPrice-=[text.object doubleValue];
+    self.totalMoney.text=[NSString stringWithFormat:@"%.2f",tmpPrice] ;
+    [self.goodsListTableView reloadData];
+}
+
+- (void)tongzhi:(NSNotification *)text{
+    NSLog(@"－－－－－接收到通知------");
+    double tmpPrice=[self.totalMoney.text doubleValue];
+    tmpPrice+=[text.object doubleValue];
+    self.totalMoney.text=[NSString stringWithFormat:@"%.2f",tmpPrice] ;
+    [self.goodsListTableView reloadData];
+}
+
+
 - (void)viewDidAppear:(BOOL)animated{
     [self.goodsListTableView reloadData];
+    double sumAmount=0;
+    for (int i=0; i<self.shoppingList.count; i++) {
+        GoodsBuy *goodsBuy=(GoodsBuy*)[self.shoppingList objectAtIndex:i];
+        sumAmount+=goodsBuy.price*goodsBuy.amount;
+    }
+    self.totalMoney.text=[NSString stringWithFormat:@"%.2f", sumAmount];
 }
 
 - (NSMutableArray*)shoppingList{
@@ -51,6 +83,7 @@
     ShoppingCartCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Shopping Cart Cell"];
 //    NSMutableDictionary *tmpDic=(NSMutableDictionary*)[self.shoppingList objectAtIndex:indexPath.row];
     GoodsBuy *goodsBuy=(GoodsBuy*)[self.shoppingList objectAtIndex:indexPath.row];
+    cell.goodsId=goodsBuy.goodsId;
     cell.goodsName.text=goodsBuy.name;
     cell.goodsKind.text=goodsBuy.kind;
     cell.goodsImage.image=[UIImage imageWithData:goodsBuy.imgName];
@@ -62,5 +95,33 @@
 }
 
 - (IBAction)jiesuan:(id)sender {
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+    NSData *takeData=[user objectForKey:@"shoppingCart"];
+    NSMutableArray *tmpShoppingCart=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
+    takeData=[user objectForKey:@"goodsList"];
+    NSMutableArray *tmpGoodsList=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
+    if (tmpShoppingCart==nil) {
+        tmpShoppingCart=[[NSMutableArray alloc]init];
+    }
+    if (tmpGoodsList==nil) {
+        tmpGoodsList=[[NSMutableArray alloc]init];
+    }
+    for (int i=0; i<tmpShoppingCart.count; i++) {
+        GoodsBuy *goodsBuy=(GoodsBuy*)[tmpShoppingCart objectAtIndex:i];
+        
+        for (int j=0; j<tmpGoodsList.count; j++) {
+            Goods *goods=(Goods*)[tmpGoodsList objectAtIndex:j];
+            if (goodsBuy.goodsId==goods.goodsId) {
+                goods.sales+=goodsBuy.amount;
+                break;
+            }
+        }
+    }
+    [user removeObjectForKey:@"shoppingCart"];
+    NSData *data=[NSKeyedArchiver archivedDataWithRootObject:tmpGoodsList];
+    [user setObject:data forKey:@"goodsList"];
+    [user synchronize];
+    [self.goodsListTableView reloadData];
+    self.totalMoney.text=@"0";
 }
 @end
