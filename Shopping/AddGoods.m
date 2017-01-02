@@ -2,8 +2,8 @@
 //  AddGoods.m
 //  Shopping
 //
-//  Created by River on 21/12/2016.
-//  Copyright © 2016 River. All rights reserved.
+//  Created by 王 鸿锴 on 21/12/2016.
+//  Copyright © 2016 WHK. All rights reserved.
 //
 
 #import "AddGoods.h"
@@ -25,7 +25,7 @@
     self.title=@"添加商品";
     self.saveDesc.layer.borderColor=UIColor.grayColor.CGColor;
     self.saveDesc.layer.borderWidth=1;
-    self.saveImage.image=[UIImage imageNamed:@"me.jpg"];
+    self.saveImage.image=[UIImage imageNamed:@"moren.png"];
     UITapGestureRecognizer *g = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(alertHeadPortrait:)];
     [self.saveImage addGestureRecognizer:g];
     self.saveImage.userInteractionEnabled = YES;

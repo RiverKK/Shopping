@@ -2,8 +2,8 @@
 //  SignIn.m
 //  Shopping
 //
-//  Created by River on 21/12/2016.
-//  Copyright © 2016 River. All rights reserved.
+//  Created by 卢享 on 21/12/2016.
+//  Copyright © 2016 LX. All rights reserved.
 //
 
 #import "SignIn.h"
@@ -35,22 +35,22 @@
 */
 
 - (IBAction)signIn:(id)sender {
-//    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
-//    NSMutableDictionary *userInfo = [[user dictionaryForKey:@"userInfo"] mutableCopy];
-////    NSLog(@"%@", [userInfo objectForKey:@"userName"]);
-////    NSLog(@"%@", [userInfo objectForKey:@"userPassword"]);
-//    
-//    if ([[userInfo objectForKey:@"userName"]isEqualToString:self.userName.text] && [[userInfo objectForKey:@"userPassword"]isEqualToString:self.userPassword.text]) {
-//        [self performSegueWithIdentifier:@"sign in successfully" sender:self];
-//    }
-//    else{
-//        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"登录失败" message:@"用户名或密码错误。" preferredStyle:UIAlertControllerStyleAlert];
-//        
-//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
-//        [alertController addAction:cancelAction];
-//        
-//        [self presentViewController:alertController animated:YES completion:nil];
-//    }
-    [self performSegueWithIdentifier:@"sign in successfully" sender:self];
+    NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *userInfo = [[user dictionaryForKey:@"userInfo"] mutableCopy];
+//    NSLog(@"%@", [userInfo objectForKey:@"userName"]);
+//    NSLog(@"%@", [userInfo objectForKey:@"userPassword"]);
+    
+    if ([[userInfo objectForKey:@"userName"]isEqualToString:self.userName.text] && [[userInfo objectForKey:@"userPassword"]isEqualToString:self.userPassword.text]) {
+        [self performSegueWithIdentifier:@"sign in successfully" sender:self];
+    }
+    else{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"登录失败" message:@"用户名或密码错误。" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancelAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+//    [self performSegueWithIdentifier:@"sign in successfully" sender:self];
 }
 @end

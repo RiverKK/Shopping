@@ -2,8 +2,8 @@
 //  GoodsBuy.m
 //  Shopping
 //
-//  Created by River on 24/12/2016.
-//  Copyright © 2016 River. All rights reserved.
+//  Created by NiceMatter on 24/12/2016.
+//  Copyright © 2016 NiceMatter. All rights reserved.
 //
 
 #import "GoodsBuy.h"

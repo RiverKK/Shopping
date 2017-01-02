@@ -77,10 +77,17 @@
 - (NSMutableArray*)goodsList{
     NSUserDefaults *user=[NSUserDefaults standardUserDefaults];
     NSData *takeData=[user objectForKey:@"goodsList"];
-    _goodsList=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
+    NSMutableArray *tmpArray=[NSKeyedUnarchiver unarchiveObjectWithData:takeData];
     if(_goodsList==nil){
         _goodsList=[NSMutableArray array];
     }
+    if (tmpArray==nil) {
+        tmpArray=[NSMutableArray array];
+    }
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"sales" ascending:NO];
+    NSMutableArray *ss=[NSMutableArray arrayWithObject:sortDescriptor];
+    _goodsList = (NSMutableArray*)[tmpArray sortedArrayUsingDescriptors:ss];
     return _goodsList;
 }
 
@@ -146,6 +153,10 @@
             }
         }
         if(flag==NO){
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"添加成功" message:nil preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:nil];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:nil];
             GoodsBuy *goodsBUy=[[GoodsBuy alloc]init];
             goodsBUy.name=goods.name;
             goodsBUy.kind=goods.kind;

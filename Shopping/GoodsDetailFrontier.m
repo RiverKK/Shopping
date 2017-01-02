@@ -2,8 +2,8 @@
 //  GoodsDetailFrontier.m
 //  Shopping
 //
-//  Created by River on 23/12/2016.
-//  Copyright © 2016 River. All rights reserved.
+//  Created by 尹皇 on 23/12/2016.
+//  Copyright © 2016 YH. All rights reserved.
 //
 
 #import "GoodsDetailFrontier.h"

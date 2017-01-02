@@ -2,8 +2,8 @@
 //  Shopping Cart Cell.h
 //  Shopping
 //
-//  Created by River on 23/12/2016.
-//  Copyright © 2016 River. All rights reserved.
+//  Created by NiceMatter on 23/12/2016.
+//  Copyright © 2016 NiceMatter. All rights reserved.
 //
 
 #import "ViewController.h"

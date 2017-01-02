@@ -2,8 +2,8 @@
 //  ChangePassword.m
 //  Shopping
 //
-//  Created by River on 23/12/2016.
-//  Copyright © 2016 River. All rights reserved.
+//  Created by 卢享 on 23/12/2016.
+//  Copyright © 2016 LX. All rights reserved.
 //
 
 #import "ChangePassword.h"
